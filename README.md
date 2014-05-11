@@ -108,14 +108,14 @@ StickyScrollView 是一个让ScrollView同样支持浮动悬停的控件。
 其他
 ------
 在 [这里](https://github.com/emilsjolander/StickyScrollViewItems) 你可以找到与本项目具有相似功能的开源项目[StickyScrollViewItems](https://github.com/emilsjolander/StickyScrollViewItems)。  
-两个项目实现的功能是一样的，相比而言：  
-1. 本项目在使用的时候相对比较复杂，要写的代码会比较多，[StickyScrollViewItems](https://github.com/emilsjolander/StickyScrollViewItems) 项目使用起来比较简单。
-1. 本项目支持子控件可悬停状态的动态切换，你可以在代码中通过设置``mCallbacks.setEnableSticky(!enableSticky);``来动态控制某个View是否悬停并且不影响其他子控件的悬停状态。  
-1. 本项目中可以方便的控制悬停控件的悬停范围,可控制悬停控件从哪个View到哪个View之前悬停,具体可参照 StickyScrollViewCallbacks 的第二个构造函数:
+两个项目实现的功能是一样的，相比而言:  
+* 本项目在使用的时候相对比较复杂，要写的代码会比较多，[StickyScrollViewItems](https://github.com/emilsjolander/StickyScrollViewItems) 项目使用起来比较简单。
+* 本项目支持子控件可悬停状态的动态切换，你可以在代码中通过设置``mCallbacks.setEnableSticky(!enableSticky);``来动态控制某个View是否悬停并且不影响其他子控件的悬停状态。  
+* 本项目中可以方便的控制悬停控件的悬停范围,可控制悬停控件从哪个View到哪个View之前悬停,具体可参照 StickyScrollViewCallbacks 的第二个构造函数:
 ``` java  
     // 不设置endView将一直悬停，直到ScrollView滚动到最底部
     public StickyScrollViewCallbacks(View stickyView, View placeholderView, View endView,StickyScrollView observableScrollView) 
 ```
-1. ...  
+* 其他 
 
 总之，两个项目各有优缺点，大家可以根据自己的喜好选择啦。
