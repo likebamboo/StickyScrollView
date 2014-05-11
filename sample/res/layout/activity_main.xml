@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <View
+        style="@style/Item.Bottom.Alt"
+        android:layout_height="50dp"
+        android:background="@color/sticky_item_text" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.likebamboo.stickyscrollview.StickyScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <View
+                    android:id="@+id/placeholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp" />
+
+                <View
+                    android:id="@+id/view1"
+                    style="@style/Item.Top" />
+
+                <View
+                    android:id="@+id/view2"
+                    style="@style/Item.Bottom" />
+
+                <View style="@style/Item.Bottom.Alt" />
+
+                <View
+                    android:id="@+id/placeholder2"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp" />
+
+                <View style="@style/Item.Bottom" />
+
+                <View style="@style/Item.Bottom.Alt" />
+
+                <View style="@style/Item.Bottom" />
+
+                <View style="@style/Item.Bottom.Alt" />
+            </LinearLayout>
+        </com.likebamboo.stickyscrollview.StickyScrollView>
+
+        <TextView
+            android:id="@+id/sticky"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="@string/stop_sticky"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/sticky2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="@string/sticky_item"
+            android:textColor="@android:color/black" />
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">StickyScrollView</string>
+    <string name="sticky_item">Sticky</string>
+    <string name="start_sticky">点击我开启悬停此View</string>
+    <string name="stop_sticky">点击我停止悬停此View</string>
+
+</resources>
