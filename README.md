@@ -1,7 +1,7 @@
 StickyScrollView
 ========================
 相信大家都知道有很多让ListView分组Header浮动悬停的开源控件，比如：**[StickyListHeaders](https://github.com/emilsjolander/StickyListHeaders)**、**[pinned-section-listview](https://github.com/beworker/pinned-section-listview)**,而本项目就是要在ScrollView中实现类似的功能。  
-StickyScrollView 是一个让ScrollView同样支持浮动悬停的控件。
+StickyScrollView 是一个让ScrollView同样支持浮动悬停的控件(该控件支持android2.2(api level 8)及以上的版本)。
 效果图如下(gif屏幕录制，有点卡顿，实际使用不会的)：  
 ![sticyScrollView](https://raw.github.com/likebamboo/StickyScrollView/master/ScreenCapture/screen.gif)
 
