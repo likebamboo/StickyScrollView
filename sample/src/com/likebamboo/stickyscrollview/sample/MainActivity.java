@@ -46,13 +46,15 @@ public class MainActivity extends Activity {
         mStickyView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mStickyScrollView.scrollTo(0, mPlaceholderView.getTop());
                 boolean enableSticky = mCallbacks.getEnableSticky();
                 mCallbacks.setEnableSticky(!enableSticky);
                 if (enableSticky) {
                     mStickyView.setText(R.string.start_sticky);
                 } else {
                     mStickyView.setText(R.string.stop_sticky);
+                }
+                if (enableSticky) {
+                    mCallbacks.reset();
                 }
             }
         });

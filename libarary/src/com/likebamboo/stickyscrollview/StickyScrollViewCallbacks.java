@@ -116,21 +116,8 @@ public class StickyScrollViewCallbacks implements StickyScrollView.Callbacks {
     public void onScrollChanged() {
         // 首先计算移动的距离
         int translationY = calTranslationY();
-        /**
-         * <pre>
-         * 针对2.3及以下版本，直接用layout方法改变其位置
-         * 也许有人说，可以用[NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids)兼容动画啊。
-         * 可惜用NineOldAndroids动画执行后，控件的可点击区域还是在原来的地方啊【2.3及以下版本】。
-         * github上好多人都报告了这个问题，但是没办法解决。这是android2.3及以下版本的系统问题，不是NineOldAndroids开源控件的问题
-         * (之前我就是这么做的，发现不行后，才使用了layout方法，感兴趣的可以尝试下。)
-         */
-        if (AnimatorProxy.NEEDS_PROXY) {
-            int l = mStickyView.getLeft();
-            int r = mStickyView.getRight();
-            mStickyView.layout(l, translationY, r, translationY + mStickyView.getHeight());
-        } else {
-            ViewHelper.setTranslationY(mStickyView, translationY);
-        }
+        // 移动
+        translateY(translationY);
     }
 
     /**
@@ -184,5 +171,39 @@ public class StickyScrollViewCallbacks implements StickyScrollView.Callbacks {
      */
     public boolean getEnableSticky() {
         return mEnableSticky;
+    }
+
+    /**
+     * 重置，让可悬停控件回到最初应该停靠的地方(mPlaceholderView所在位置)，同时取消可悬浮状态
+     */
+    public void reset() {
+        int position = getTop(mPlaceholderView) - mObservableScrollView.getScrollY();
+        // 移动
+        translateY(position);
+        // 取消可悬停状态
+        mEnableSticky = false;
+    }
+
+    /**
+     * 将View移动到 position位置
+     * 
+     * @param position
+     */
+    private void translateY(int position) {
+        /**
+         * <pre>
+         * 针对2.3及以下版本，直接用layout方法改变其位置
+         * 也许有人说，可以用[NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids)兼容动画啊。
+         * 可惜用NineOldAndroids动画执行后，控件的可点击区域还是在原来的地方啊【2.3及以下版本】。
+         * github上好多人都报告了这个问题，但是没办法解决。这是android2.3及以下版本的系统问题，不是NineOldAndroids开源控件的问题
+         * (之前我就是这么做的，发现不行后，才使用了layout方法，感兴趣的可以尝试下。)
+         */
+        if (AnimatorProxy.NEEDS_PROXY) {
+            int l = mStickyView.getLeft();
+            int r = mStickyView.getRight();
+            mStickyView.layout(l, position, r, position + mStickyView.getHeight());
+        } else {
+            ViewHelper.setTranslationY(mStickyView, position);
+        }
     }
 }
