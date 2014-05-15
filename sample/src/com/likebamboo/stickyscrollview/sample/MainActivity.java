@@ -53,9 +53,6 @@ public class MainActivity extends Activity {
                 } else {
                     mStickyView.setText(R.string.stop_sticky);
                 }
-                if (enableSticky) {
-                    mCallbacks.reset();
-                }
             }
         });
 
@@ -71,7 +68,6 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, R.string.app_name, Toast.LENGTH_SHORT).show();
-                mStickyScrollView.scrollTo(0, mPlaceholderView2.getTop());
             }
         });
 

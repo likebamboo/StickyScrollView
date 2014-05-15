@@ -115,7 +115,7 @@ public class StickyScrollViewCallbacks implements StickyScrollView.Callbacks {
     @Override
     public void onScrollChanged() {
         // 首先计算移动的距离
-        int translationY = calTranslationY();
+        int translationY = calTranslationY(mEnableSticky);
         // 移动
         translateY(translationY);
     }
@@ -125,12 +125,12 @@ public class StickyScrollViewCallbacks implements StickyScrollView.Callbacks {
      * 
      * @return
      */
-    private int calTranslationY() {
+    private int calTranslationY(boolean enableSticky) {
         // 如果不能浮动，那么固定在placeHolderView所在的位置
-        if (!mEnableSticky) {
+        if (!enableSticky) {
             return getTop(mPlaceholderView) - mObservableScrollView.getScrollY();
         }
-        float translationY = Math.max(0,
+        int translationY = Math.max(0,
                 getTop(mPlaceholderView) - mObservableScrollView.getScrollY());
         if (mEndSticyView != null) {
             /**
@@ -147,7 +147,7 @@ public class StickyScrollViewCallbacks implements StickyScrollView.Callbacks {
                 }
             }
         }
-        return Math.round(translationY);
+        return translationY;
     }
 
     /**
@@ -164,6 +164,7 @@ public class StickyScrollViewCallbacks implements StickyScrollView.Callbacks {
      */
     public void setEnableSticky(boolean enable) {
         mEnableSticky = enable;
+        onScrollChanged();
     }
 
     /**
@@ -171,17 +172,6 @@ public class StickyScrollViewCallbacks implements StickyScrollView.Callbacks {
      */
     public boolean getEnableSticky() {
         return mEnableSticky;
-    }
-
-    /**
-     * 重置，让可悬停控件回到最初应该停靠的地方(mPlaceholderView所在位置)，同时取消可悬浮状态
-     */
-    public void reset() {
-        int position = getTop(mPlaceholderView) - mObservableScrollView.getScrollY();
-        // 移动
-        translateY(position);
-        // 取消可悬停状态
-        mEnableSticky = false;
     }
 
     /**
